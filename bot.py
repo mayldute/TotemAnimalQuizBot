@@ -12,7 +12,7 @@ user_data = {}
 USER_DATA_LIFETIME = 86400  
 
 def clear_inactive_users():
-    """Функция для очистки данных неактивных пользователей."""
+    """Function to clear data of inactive users."""
     while True:
         current_time = time.time()
         inactive_users = []
@@ -34,7 +34,7 @@ cleanup_thread.start()
 r = handle_redis_connection_error()
 
 def cache_image_with_redis(image_url):
-    """Кэширование изображений с Redis."""
+    """Cache images using Redis."""
     if r is None:
         return None  
 
@@ -51,7 +51,7 @@ def cache_image_with_redis(image_url):
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    """Функция приветствия."""
+    """Send a welcome message with quiz information and options."""
     markup = InlineKeyboardMarkup()
     start_button = InlineKeyboardButton("Начать викторину", callback_data="start_quiz")
     guardianship = InlineKeyboardButton("О программе опекунства", url="https://moscowzoo.ru/about/guardianship")
@@ -74,14 +74,14 @@ def send_welcome(message):
     
 @bot.callback_query_handler(func=lambda call: call.data == "start_quiz")
 def start_quiz(call):
-    """Функция начала викторины."""
+    """Initialize quiz for the user."""
     user_data[call.message.chat.id]["current_question"] = 0
     user_data[call.message.chat.id]["score"] = {}
     send_question(call.message.chat.id)
 
 
 def send_question(chat_id):
-    """Функция для проверки наличия вопросов и отправки следующего вопроса или результата."""
+    """Send the next quiz question or display the result if no questions remain."""
     current_question_index = user_data[chat_id]["current_question"]
 
     if current_question_index < len(QUESTIONS):
@@ -104,7 +104,7 @@ def send_question(chat_id):
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("answer:"))
 def handle_answer(call):
-    """Функция обработки ответов."""
+    """Process user's answer and update score."""
     data = call.data.split(":")
     current_question_index = int(data[1])
     answer_index = int(data[2])
@@ -119,7 +119,7 @@ def handle_answer(call):
     send_question(chat_id)
 
 def create_result_buttons():
-    """Функция создания кнопок для сообщения с результатом."""
+    """Create inline keyboard for result message."""
     markup = InlineKeyboardMarkup()
     guardianship = InlineKeyboardButton("Стать опекуном", url="https://moscowzoo.ru/about/guardianship")
     restart_button = InlineKeyboardButton("Повторить попытку?", callback_data="start_quiz")
@@ -135,7 +135,7 @@ def create_result_buttons():
     return markup
 
 def create_back_button():
-    """Функция создания кнопки возврата на сообщение с результатом."""
+    """Creates an inline keyboard markup with a single back button."""
     markup = InlineKeyboardMarkup()
     back_button = InlineKeyboardButton("🔙 Вернуться", callback_data="back_to_result")
     markup.add(back_button)
@@ -143,7 +143,7 @@ def create_back_button():
     return markup
 
 def send_result(chat_id):
-    """Функция отправки результата."""
+    """Send the final quiz result to the user."""
     score = user_data[chat_id]["score"]
     animal = max(score, key=score.get) 
     result = RESULTS[animal]
@@ -157,13 +157,13 @@ def send_result(chat_id):
 
 @bot.callback_query_handler(func=lambda call: call.data == "contact_support")
 def contact_support(call):
-    """Функция запроса информации у пользователя."""
+    """Handles the 'contact support' functionality for the bot."""
     chat_id = call.message.chat.id
     bot.send_message(chat_id, "Напишите ваш вопрос, и мы свяжемся с вами как можно скорее.")
     bot.register_next_step_handler_by_chat_id(chat_id, forward_to_admin)
 
 def forward_to_admin(message):
-    """Функция отправки информации админу."""
+    """Forwards a user's message to the admin along with the user's quiz results."""
     chat_id = message.chat.id
     user_question = message.text
 
@@ -183,14 +183,14 @@ def forward_to_admin(message):
 
 @bot.callback_query_handler(func=lambda call: call.data == "leave_feedback")
 def ask_feedback(call):
-    """Функция запроса отзыва."""
+    """Prompt the user to provide feedback and register the next step handler."""
     chat_id = call.message.chat.id
     bot.send_message(chat_id, "Напишите ваш отзыв о боте или викторине:")
     bot.register_next_step_handler_by_chat_id(chat_id, forward_feedback_to_admin)
 
 
 def forward_feedback_to_admin(message):
-    """Функция отправки отзыва админу."""
+    """Forwards the user's feedback to the admin."""
     chat_id = message.chat.id
     feedback_text = message.text
 
@@ -204,7 +204,7 @@ def forward_feedback_to_admin(message):
 
 @bot.callback_query_handler(func=lambda call: call.data == "share_menu")
 def share_menu(call):
-    """Функция выбора соцсети для отправки результата."""
+    """Displays the share menu to the user."""
     chat_id = call.message.chat.id
     score = user_data[chat_id]["score"]
     animal = max(score, key=score.get) 
@@ -227,7 +227,7 @@ def share_menu(call):
 
 @bot.callback_query_handler(func=lambda call: call.data == "back_to_result")
 def back_to_result(call):
-    """Функция возврата к сообщению с результатом."""
+    """Returns the user back to the result message."""
     chat_id = call.message.chat.id
     user_score = user_data.get(chat_id, {}).get("score", {})
     
