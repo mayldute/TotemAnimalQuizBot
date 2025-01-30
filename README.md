@@ -1,36 +1,30 @@
-@TotemAnimalQuizBot – это интерактивный Telegram-бот-викторина, созданный для популяризации программы опеки Московского зоопарка. Он помогает пользователям определить свое "тотемное животное" и узнать больше о возможности стать опекуном одного из животных зоопарка.
+@TotemAnimalQuizBot is an interactive Telegram quiz bot designed to promote the Moscow Zoo’s adoption program. It helps users discover their "totem animal" and learn more about how they can become a guardian of one of the zoo's animals.
 
-**Функциональность:**
+**Functionality:**
+Easy Interaction – The bot starts with the /start command or a button. It guides the user through the entire quiz process by asking multiple-choice questions.\n
+Interactive Quiz – Sequential questions with images help determine the user’s totem animal.
 
-Простое взаимодействие – бот запускается командой /start или кнопкой. Он ведет пользователя через весь процесс викторины, задавая вопросы с вариантами ответов.
+Answer Processing Algorithm – Each answer is assigned points, which ultimately determine the result.
 
-Интерактивная викторина – последовательные вопросы с изображениями помогают определить тотемное животное пользователя.
+Result Generation – At the end of the quiz, the bot sends the user a description of their totem animal and a link to the adoption program.
 
-Алгоритм обработки ответов – каждому ответу присваиваются баллы, которые в итоге определяют результат.
+Image Support – The quiz is accompanied by images, and the result includes an image of the specific animal.
 
-Генерация результатов – по завершении викторины бот отправляет пользователю описание его тотемного животного и ссылку на программу опеки.
+Social Media Integration – The user can easily share the result via Twitter, VK, Facebook, and Telegram.
 
-Работа с изображениями – викторина сопровождается картинками, а результат включает изображение определенного животного.
+Zoo Staff Contact – Users can send a question to a zoo staff member, with the quiz result included.
 
-Поддержка социальных сетей – пользователь может легко поделиться результатом через Twitter, ВКонтакте, Facebook и Telegram.
+Quiz Restart – The bot allows the user to retake the quiz.
 
-Связь с сотрудником зоопарка – можно отправить вопрос сотруднику, при этом ему передается результат викторины.
+Feedback Collection – Users can leave feedback about the bot and the quiz.
 
-Перезапуск викторины – бот позволяет пройти тест повторно.
+Security and Privacy – User data is stored for no more than 24 hours, in compliance with GDPR.
 
-Сбор обратной связи – пользователи могут оставлять отзывы о боте и викторине.
+Scalability – The bot works reliably as the number of users increases.
 
-Безопасность и конфиденциальность – данные пользователей хранятся не более 24 часов, что соответствует GDPR.
+Optimization and Monitoring – Multitasking and error handling are used, such as Redis for image caching.
 
-Масштабируемость – бот стабильно работает при увеличении числа пользователей.
-
-Оптимизация и мониторинг – используется многозадачность и обработка ошибок, например, Redis для кэширования изображений.
-
-
-**Требования:**
-
+Requirements:
 Python 3.8+
-
-Библиотеки из requirements.txt:
-
+Libraries from requirements.txt:
 pip install -r requirements.txt
