@@ -1,7 +1,9 @@
 @TotemAnimalQuizBot is an interactive Telegram quiz bot designed to promote the Moscow Zoo’s adoption program. It helps users discover their "totem animal" and learn more about how they can become a guardian of one of the zoo's animals.
 
 **Functionality:**
-Easy Interaction – The bot starts with the /start command or a button. It guides the user through the entire quiz process by asking multiple-choice questions.\n
+
+Easy Interaction – The bot starts with the /start command or a button. It guides the user through the entire quiz process by asking multiple-choice questions.
+
 Interactive Quiz – Sequential questions with images help determine the user’s totem animal.
 
 Answer Processing Algorithm – Each answer is assigned points, which ultimately determine the result.
@@ -24,7 +26,8 @@ Scalability – The bot works reliably as the number of users increases.
 
 Optimization and Monitoring – Multitasking and error handling are used, such as Redis for image caching.
 
-Requirements:
+**Requirements:**
+
 Python 3.8+
-Libraries from requirements.txt:
-pip install -r requirements.txt
+
+Libraries from requirements.txt: pip install -r requirements.txt
