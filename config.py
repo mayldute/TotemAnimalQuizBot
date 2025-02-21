@@ -8,84 +8,116 @@ ADMIN_ID = os.getenv('ADMIN_ID')
 
 QUESTIONS = [
     {
-        "text": "Где вы хотели бы жить?",
+        "text": "Where would you like to live?",
         "answers": [
-            {"text": "В лесу", "points": {"Восточно-сибирская рысь": 3, "Снежный барс": 2}},
-            {"text": "В степи", "points": {"Зебра Греви": 3}},
-            {"text": "На берегу реки", "points": {"Выдра обыкновенная": 2, "Лебедь-шипун": 3}},
-            {"text": "В горах", "points": {"Снежный барс": 3}}
-        ], 
-        "img":"https://i.pinimg.com/474x/ac/b3/35/acb335a3a3fc4e6a2da1f6cd9cc37db7.jpg",
+            {"text": "In the forest", "points": {"East Siberian Lynx": 3, "Snow Leopard": 2}},
+            {"text": "In the steppe", "points": {"Grevy's Zebra": 3}},
+            {"text": "By the river", "points": {"European Otter": 2, "Mute Swan": 3}},
+            {"text": "In the mountains", "points": {"Snow Leopard": 3}}
+        ],
+        "img": "https://i.pinimg.com/474x/ac/b3/35/acb335a3a3fc4e6a2da1f6cd9cc37db7.jpg",
     },
     {
-        "text": "Какая у вас любимая еда?",
+        "text": "What is your favorite food?",
         "answers": [
-            {"text": "Фрукты и овощи", "points": {"Зебра Греви": 2, "Выдра обыкновенная": 3}},
-            {"text": "Рыба", "points": {"Выдра обыкновенная": 3}},
-            {"text": "Мясо", "points": {"Восточно-сибирская рысь": 3, "Снежный барс": 2}},
-            {"text": "Зерно", "points": {"Лебедь-шипун": 3}}
+            {"text": "Fruits and vegetables", "points": {"Grevy's Zebra": 2, "European Otter": 3}},
+            {"text": "Fish", "points": {"European Otter": 3}},
+            {"text": "Meat", "points": {"East Siberian Lynx": 3, "Snow Leopard": 2}},
+            {"text": "Grain", "points": {"Mute Swan": 3}}
         ],
         "img": "https://i.pinimg.com/474x/14/b4/5b/14b45b1b8880986cb36628ec37594f00.jpg",
     },
     {
-        "text": "Как вы предпочитаете проводить свободное время?",
+        "text": "How do you prefer to spend your free time?",
         "answers": [
-            {"text": "В спокойствии и размышлениях", "points": {"Лебедь-шипун": 3}},
-            {"text": "За активными играми", "points": {"Выдра обыкновенная": 2, "Зебра Греви": 3}},
-            {"text": "Исследуя природу", "points": {"Снежный барс": 3, "Восточно-сибирская рысь": 2}},
-            {"text": "В комфортной зоне", "points": {"Пингвин африканский": 3}}
-        ], 
+            {"text": "In peace and reflection", "points": {"Mute Swan": 3}},
+            {"text": "Playing active games", "points": {"European Otter": 2, "Grevy's Zebra": 3}},
+            {"text": "Exploring nature", "points": {"Snow Leopard": 3, "East Siberian Lynx": 2}},
+            {"text": "In a comfort zone", "points": {"African Penguin": 3}}
+        ],
         "img": "https://i.pinimg.com/736x/16/7c/1e/167c1e9b4b981fcdbdf48219da3b8933.jpg",
     },
     {
-        "text": "Какой у вас характер?",
+        "text": "What is your personality like?",
         "answers": [
-            {"text": "Терпеливый и заботливый", "points": {"Амурский тигр": 3}},
-            {"text": "Энергичный и любопытный", "points": {"Выдра обыкновенная": 2, "Зебра Греви": 3}},
-            {"text": "Независимый и немного таинственный", "points": {"Восточно-сибирская рысь": 3, "Снежный барс": 2}},
-            {"text": "Спокойный и величественный", "points": {"Лебедь-шипун": 3}}
+            {"text": "Patient and caring", "points": {"Amur Tiger": 3}},
+            {"text": "Energetic and curious", "points": {"European Otter": 2, "Grevy's Zebra": 3}},
+            {"text": "Independent and a bit mysterious", "points": {"East Siberian Lynx": 3, "Snow Leopard": 2}},
+            {"text": "Calm and majestic", "points": {"Mute Swan": 3}}
         ],
         "img": "https://i.pinimg.com/736x/5c/ac/5a/5cac5a9ca9ea765671b446a7480f09f9.jpg",
     },
     {
-        "text": "Как вы относитесь к компании?",
+        "text": "How do you feel about company?",
         "answers": [
-            {"text": "Я предпочитаю быть один", "points": {"Амурский тигр": 3}},
-            {"text": "Мне нравится компания, но не всегда", "points": {"Снежный барс": 2}},
-            {"text": "Я обожаю быть в окружении других", "points": {"Выдра обыкновенная": 3, "Зебра Греви": 2}},
-            {"text": "Я всегда с друзьями и семьями", "points": {"Пингвин африканский": 3}}
+            {"text": "I prefer to be alone", "points": {"Amur Tiger": 3}},
+            {"text": "I like company, but not always", "points": {"Snow Leopard": 2}},
+            {"text": "I love being surrounded by others", "points": {"European Otter": 3, "Grevy's Zebra": 2}},
+            {"text": "I’m always with friends and family", "points": {"African Penguin": 3}}
         ],
         "img": "https://i.pinimg.com/736x/2a/a3/21/2aa3219150c693f022adc0e5dda06ef7.jpg",
     },
     {
-        "text": "Какой стиль жизни вам ближе?",
+        "text": "What lifestyle suits you best?",
         "answers": [
-            {"text": "Я люблю путешествовать и исследовать", "points": {"Снежный барс": 3, "Амурский тигр": 2}},
-            {"text": "Я предпочитаю расслабляться в своем месте", "points": {"Пингвин африканский": 2, "Лебедь-шипун": 3}},
-            {"text": "Я люблю активные занятия", "points": {"Выдра обыкновенная": 3, "Зебра Греви": 2}},
-            {"text": "Я всегда нахожу время для себя", "points": {"Дальневосточный леопард": 3}}
+            {"text": "I love traveling and exploring", "points": {"Snow Leopard": 3, "Amur Tiger": 2}},
+            {"text": "I prefer to relax at home", "points": {"African Penguin": 2, "Mute Swan": 3}},
+            {"text": "I enjoy active hobbies", "points": {"European Otter": 3, "Grevy's Zebra": 2}},
+            {"text": "I always find time for myself", "points": {"Amur Leopard": 3}}
         ],
         "img": "https://i.pinimg.com/474x/d5/f2/42/d5f24202a391168ab2f52220f92da7f8.jpg",
     },
     {
-        "text": "Как вы относитесь к холодной погоде?",
+        "text": "How do you feel about cold weather?",
         "answers": [
-            {"text": "Мне нравится холод, комфортно в морозы", "points": {"Пингвин африканский": 3, "Снежный барс": 2}},
-            {"text": "Холод не для меня, я люблю тепло", "points": {"Выдра обыкновенная": 2, "Дальневосточный леопард": 3}},
-            {"text": "Мне все равно, я адаптируюсь к любой погоде", "points": {"Зебра Греви": 3}},
-            {"text": "Я предпочитаю умеренные условия", "points": {"Амурский тигр": 3, "Лебедь-шипун": 2}}
+            {"text": "I like the cold, I feel comfortable in frost", "points": {"African Penguin": 3, "Snow Leopard": 2}},
+            {"text": "Cold isn’t for me, I prefer warmth", "points": {"European Otter": 2, "Amur Leopard": 3}},
+            {"text": "I can adapt to any weather", "points": {"Grevy's Zebra": 3}},
+            {"text": "I prefer moderate conditions", "points": {"Amur Tiger": 3, "Mute Swan": 2}}
         ],
         "img": "https://i.pinimg.com/474x/fa/60/9e/fa609ef81a8ee80bf6516eed87324b3a.jpg",
     },
 ]
 
 RESULTS = {
-    "Восточно-сибирская рысь": {"description": "Ты восточно-сибирская рысь! Независимый и скрытный. Ты любишь уединение, а твоя грация и сила впечатляют окружающих. Ты всегда точно знаешь, что хочешь, и никогда не сдаешься, несмотря на трудности. Тебя можно встретить в дикой тайге, где ты являешься настоящим мастером скрытности.", "image": "https://i.pinimg.com/474x/39/84/bc/3984bce43f624988048b03fc5b8ddb10.jpg", "url": "https://moscowzoo.ru/animals/kinds/vostochno_sibirskaya_rys"},
-    "Снежный барс": {"description": "Ты снежный барс! Свободолюбивый исследователь. Ты обладаешь храбростью и свободным духом, всегда стремишься к новым вершинам. Ты предпочитаешь одиночество и не любишь, когда тебя сковывают. Твоя величественная походка и способность к выживанию в самых суровых условиях заставляют восхищаться.", "image": "https://i.pinimg.com/474x/95/cd/e0/95cde05f94637d018e1874e985281441.jpg", "url": "https://moscowzoo.ru/animals/kinds/irbis_snezhnyy_bars"},
-    "Зебра Греви": {"description": "Ты зебра Греви! Энергичный и дружелюбный. Ты обожаешь быть в центре внимания, и твоя неповторимая окраска вызывает восторг у всех. Твои быстрые реакции и способность адаптироваться делают тебя отличным спутником в любых приключениях. Ты знаешь, как общаться с окружающими и привлекать внимание.", "image": "https://i.pinimg.com/474x/28/58/29/285829f5368356af685e75fe8a67debf.jpg", "url": "https://moscowzoo.ru/animals/kinds/zebra_grevi"},
-    "Выдра обыкновенная": {"description": "Ты выдра обыкновенная! Любопытный и игривый. Ты всегда в поиске новых впечатлений и любишь весело проводить время. Твоя искренняя радость и дружелюбие способны поднять настроение любому. Ты никогда не сидишь на месте и всегда ищешь приключения, будь то в воде или на суше.", "image": "https://i.pinimg.com/474x/96/2a/4d/962a4d60cbb4ed2e5e0c6ff81a7d909a.jpg", "url": "https://moscowzoo.ru/animals/kinds/obyknovennaya_vydra"},
-    "Лебедь-шипун": {"description": "Ты лебедь-шипун! Спокойный и величественный. Ты наслаждаешься гармонией и красотой, окружающими тебя. Ты всегда остаешься сдержанным, но в тебе скрыта настоящая сила. Ты являешься символом грации и утонченности, а твое присутствие заставляет людей задуматься о величии природы.", "image": "https://i.pinimg.com/474x/5b/9d/85/5b9d85394d391ed3f17e38c2bdf5ecd2.jpg", "url": "https://moscowzoo.ru/animals/kinds/lebed_shipun"},
-    "Амурский тигр": {"description": "Ты амурский тигр! Могущественный и смелый. Ты — воплощение силы и уверенности. Все твои шаги продуманы, и ты всегда достигаешь своей цели. Ты волк-одиночка, но также способен быть верным другом. Твоя решимость и интеллект позволяют преодолевать любые препятствия на пути к успеху.", "image": "https://i.pinimg.com/474x/20/a2/30/20a230452438e019fcb159ee08592cb9.jpg", "url": "https://moscowzoo.ru/animals/kinds/amurskiy_tigr"},
-    "Пингвин африканский": {"description": "Ты пингвин! Забавный и стойкий. Ты всегда остаешься оптимистом и умеешь находить радость в простых вещах. Твоя стойкость и непоколебимый дух помогают тебе справляться с любыми трудностями. Ты всегда действуешь сообща и ценишь свою команду. С тобой всегда интересно и тепло.", "image": "https://i.pinimg.com/474x/5d/06/ae/5d06aefb04b6cfe94790dea743274ca7.jpg", "url": "https://moscowzoo.ru/animals/kinds/pingvin_afrikanskiy_ochkovyy"},
-    "Дальневосточный леопард": {"description": "Ты леопард! Тихий и сильный. Ты всегда действуешь с расчетом и изящно преодолеваешь любые трудности. Твоя уверенность и спокойствие помогают тебе находить выход из самых сложных ситуаций. Ты предпочитаешь оставаться в тени, но твоя сила и умение охотиться заслуживают восхищения.", "image": "https://i.pinimg.com/474x/70/c9/f7/70c9f722a23843af40324d74a847dc5d.jpg", "url": "https://moscowzoo.ru/animals/kinds/dalnevostochnyy_leopard"}
+    "East Siberian Lynx": {
+        "description": "You are an East Siberian Lynx! Independent and secretive. You love solitude, and your grace and strength impress those around you. You always know exactly what you want and never give up despite difficulties. You can be found in the wild taiga, where you are a true master of stealth.",
+        "image": "https://i.pinimg.com/474x/39/84/bc/3984bce43f624988048b03fc5b8ddb10.jpg",
+        "url": "https://moscowzoo.ru/animals/kinds/vostochno_sibirskaya_rys"
+    },
+    "Snow Leopard": {
+        "description": "You are a Snow Leopard! A free-spirited explorer. You possess bravery and a free spirit, always striving for new heights. You prefer solitude and dislike being confined. Your majestic walk and survival skills in the harshest conditions command admiration.",
+        "image": "https://i.pinimg.com/474x/95/cd/e0/95cde05f94637d018e1874e985281441.jpg",
+        "url": "https://moscowzoo.ru/animals/kinds/irbis_snezhnyy_bars"
+    },
+    "Grevy's Zebra": {
+        "description": "You are Grevy's Zebra! Energetic and friendly. You love being the center of attention, and your unique stripes delight everyone. Your quick reactions and adaptability make you a great companion for any adventure.",
+        "image": "https://i.pinimg.com/474x/28/58/29/285829f5368356af685e75fe8a67debf.jpg",
+        "url": "https://moscowzoo.ru/animals/kinds/zebra_grevi"
+    },
+    "European Otter": {
+        "description": "You are a European Otter! Curious and playful. You’re always seeking new experiences and love having fun. Your genuine joy and friendliness can cheer anyone up. You’re always looking for adventure, whether in water or on land.",
+        "image": "https://i.pinimg.com/474x/96/2a/4d/962a4d60cbb4ed2e5e0c6ff81a7d909a.jpg",
+        "url": "https://moscowzoo.ru/animals/kinds/obyknovennaya_vydra"
+    },
+    "Mute Swan": {
+        "description": "You are a Mute Swan! Calm and majestic. You enjoy harmony and the beauty around you. You always remain reserved, but hidden within you is true strength. You are a symbol of grace and elegance, and your presence makes people reflect on the grandeur of nature.",
+        "image": "https://i.pinimg.com/474x/5b/9d/85/5b9d85394d391ed3f17e38c2bdf5ecd2.jpg",
+        "url": "https://moscowzoo.ru/animals/kinds/lebed_shipun"
+    },
+    "Amur Tiger": {
+        "description": "You are an Amur Tiger! Powerful and brave. You embody strength and confidence. Every step you take is calculated, and you always achieve your goals. You’re a lone wolf but capable of being a loyal friend. Your determination and intellect allow you to overcome any obstacle on the road to success.",
+        "image": "https://i.pinimg.com/474x/20/a2/30/20a230452438e019fcb159ee08592cb9.jpg",
+        "url": "https://moscowzoo.ru/animals/kinds/amurskiy_tigr"
+    },
+    "African Penguin": {
+        "description": "You are a Penguin! Funny and resilient. You always stay optimistic and know how to find joy in simple things. Your resilience and unwavering spirit help you overcome any difficulties. You always work as a team and value your group. It's always fun and warm with you around.",
+        "image": "https://i.pinimg.com/474x/5d/06/ae/5d06aefb04b6cfe94790dea743274ca7.jpg",
+        "url": "https://moscowzoo.ru/animals/kinds/pingvin_afrikanskiy_ochkovyy"
+    },
+    "Amur Leopard": {
+        "description": "You are a Leopard! Quiet and strong. You always act with precision and gracefully overcome any challenge. Your confidence and calmness help you find a way out of even the most difficult situations. You prefer to stay in the shadows, but your strength and hunting skills command admiration.",
+        "image": "https://i.pinimg.com/474x/70/c9/f7/70c9f722a23843af40324d74a847dc5d.jpg",
+        "url": "https://moscowzoo.ru/animals/kinds/dalnevostochnyy_leopard"
+    }
 }
