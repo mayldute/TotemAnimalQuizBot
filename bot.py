@@ -53,8 +53,8 @@ def cache_image_with_redis(image_url):
 def send_welcome(message):
     """Send a welcome message with quiz information and options."""
     markup = InlineKeyboardMarkup()
-    start_button = InlineKeyboardButton("Начать викторину", callback_data="start_quiz")
-    guardianship = InlineKeyboardButton("О программе опекунства", url="https://moscowzoo.ru/about/guardianship")
+    start_button = InlineKeyboardButton("Start Quiz", callback_data="start_quiz")
+    guardianship = InlineKeyboardButton("About the Guardianship Program", url="https://moscowzoo.ru/about/guardianship")
 
     markup.add(start_button)
     markup.add(guardianship)
@@ -62,12 +62,12 @@ def send_welcome(message):
     user_data[message.chat.id] = {"score": {}, "current_question": 0, "last_interaction": time.time()}
     bot.send_message(
         message.chat.id,
-        """Привет! 
-Добро пожаловать в увлекательную викторину, где ты узнаешь, какое тотемное животное скрывается внутри тебя! 🐾
-Московский зоопарк приглашает тебя на это забавное и познавательное путешествие по миру животных. В процессе викторины ты познакомишься с интересными фактами и уникальными особенностями обитателей нашего зоопарка. 
-А ещё — возможно, ты станешь опекуном одного из этих удивительных животных! 
-Проверь свою интуицию и узнавай, какое животное в зоопарке тебе ближе всего. Задай себе пару важных вопросов: — Где бы ты хотел жить? — Какая еда тебе по душе? 
-Нажми кнопку ниже, чтобы начать викторину и пройти путь к своему тотемному животному! """,
+        """Hello! 
+Welcome to an exciting quiz where you will discover which totem animal is hidden inside you! 🐾
+The Moscow Zoo invites you on this fun and educational journey through the animal kingdom. During the quiz, you will learn interesting facts and unique features of the inhabitants of our zoo. 
+And maybe — you will become a guardian of one of these amazing animals! 
+Test your intuition and find out which animal in the zoo is closest to you. Ask yourself a few important questions: — Where would you like to live? — What food do you prefer? 
+Click the button below to start the quiz and find your totem animal! """,
         reply_markup=markup
     )
     
@@ -121,11 +121,11 @@ def handle_answer(call):
 def create_result_buttons():
     """Create inline keyboard for result message."""
     markup = InlineKeyboardMarkup()
-    guardianship = InlineKeyboardButton("Стать опекуном", url="https://moscowzoo.ru/about/guardianship")
-    restart_button = InlineKeyboardButton("Повторить попытку?", callback_data="start_quiz")
-    contact_support = InlineKeyboardButton("Связаться с сотрудником", callback_data="contact_support")
-    share_button = InlineKeyboardButton("📢 Поделиться", callback_data="share_menu")
-    feedback_button = InlineKeyboardButton("Оставить отзыв", callback_data="leave_feedback")
+    guardianship = InlineKeyboardButton("Become a Guardian", url="https://moscowzoo.ru/about/guardianship")
+    restart_button = InlineKeyboardButton("Try Again?", callback_data="start_quiz")
+    contact_support = InlineKeyboardButton("Contact Support", callback_data="contact_support")
+    share_button = InlineKeyboardButton("📢 Share", callback_data="share_menu")
+    feedback_button = InlineKeyboardButton("Leave Feedback", callback_data="leave_feedback")
 
     markup.add(restart_button)
     markup.add(guardianship, share_button)
@@ -137,7 +137,7 @@ def create_result_buttons():
 def create_back_button():
     """Creates an inline keyboard markup with a single back button."""
     markup = InlineKeyboardMarkup()
-    back_button = InlineKeyboardButton("🔙 Вернуться", callback_data="back_to_result")
+    back_button = InlineKeyboardButton("🔙 Back", callback_data="back_to_result")
     markup.add(back_button)
 
     return markup
@@ -150,7 +150,7 @@ def send_result(chat_id):
 
     markup = create_result_buttons()
 
-    text = f"{result['description']}\n\n[Узнай больше...]({result['url']})"
+    text = f"{result['description']}\n\n[Learn more...]({result['url']})"
 
     bot.send_photo(chat_id, result["image"], caption=text, reply_markup=markup, parse_mode="Markdown")
 
@@ -159,7 +159,7 @@ def send_result(chat_id):
 def contact_support(call):
     """Handles the 'contact support' functionality for the bot."""
     chat_id = call.message.chat.id
-    bot.send_message(chat_id, "Напишите ваш вопрос, и мы свяжемся с вами как можно скорее.")
+    bot.send_message(chat_id, "Please write your question, and we will get back to you as soon as possible.")
     bot.register_next_step_handler_by_chat_id(chat_id, forward_to_admin)
 
 def forward_to_admin(message):
@@ -170,22 +170,22 @@ def forward_to_admin(message):
     user_result = user_data.get(chat_id, {}).get("score", {})
     result_text = "\n".join([f"{animal}: {points}" for animal, points in user_result.items()])
     
-    admin_message = f"📩 Новый запрос от пользователя: @{message.from_user.username}\n\n"
-    admin_message += f"🔍 Результат викторины:\n{result_text}\n\n"
-    admin_message += f"💬 Вопрос пользователя: {user_question}"
+    admin_message = f"📩 New request from user: @{message.from_user.username}\n\n"
+    admin_message += f"🔍 Quiz Results:\n{result_text}\n\n"
+    admin_message += f"💬 User's question: {user_question}"
 
     bot.send_message(ADMIN_ID, admin_message)
 
     markup = create_back_button()
 
-    bot.send_message(chat_id, "Ваш вопрос отправлен сотруднику. Ожидайте ответа!", reply_markup=markup)
+    bot.send_message(chat_id, "Your question has been sent to the staff. Please wait for a response!", reply_markup=markup)
 
 
 @bot.callback_query_handler(func=lambda call: call.data == "leave_feedback")
 def ask_feedback(call):
     """Prompt the user to provide feedback and register the next step handler."""
     chat_id = call.message.chat.id
-    bot.send_message(chat_id, "Напишите ваш отзыв о боте или викторине:")
+    bot.send_message(chat_id, "Please write your feedback about the bot or the quiz:")
     bot.register_next_step_handler_by_chat_id(chat_id, forward_feedback_to_admin)
 
 
@@ -194,12 +194,12 @@ def forward_feedback_to_admin(message):
     chat_id = message.chat.id
     feedback_text = message.text
 
-    admin_message = f"📝 Новый отзыв от @{message.from_user.username}:\n\n{feedback_text}"
+    admin_message = f"📝 New feedback from @{message.from_user.username}:\n\n{feedback_text}"
     bot.send_message(ADMIN_ID, admin_message)
 
     markup = create_back_button()
 
-    bot.send_message(chat_id, "Спасибо за ваш отзыв! Он поможет нам стать лучше. 😊", reply_markup=markup)
+    bot.send_message(chat_id, "Thank you for your feedback! It will help us improve. 😊", reply_markup=markup)
 
 
 @bot.callback_query_handler(func=lambda call: call.data == "share_menu")
@@ -209,15 +209,15 @@ def share_menu(call):
     score = user_data[chat_id]["score"]
     animal = max(score, key=score.get) 
     
-    result_text = f"📢 Я прошёл викторину и узнал своё тотемное животное - {animal}! 🐾\n\nПройди тест и узнай своё: https://t.me/YourBotUsername"
+    result_text = f"📢 I took the quiz and discovered my totem animal - {animal}! 🐾\n\nTake the test and find out yours: https://t.me/YourBotUsername"
     
     markup = InlineKeyboardMarkup()
     
     twitter = InlineKeyboardButton("🐦 Twitter", url=f"https://twitter.com/intent/tweet?text={result_text}")
-    vk = InlineKeyboardButton("📘 ВКонтакте", url=f"https://vk.com/share.php?url=https://t.me/TotemAnimalQuizBot")
+    vk = InlineKeyboardButton("📘 VK", url=f"https://vk.com/share.php?url=https://t.me/TotemAnimalQuizBot")
     facebook = InlineKeyboardButton("📘 Facebook", url=f"https://www.facebook.com/sharer/sharer.php?u=https://t.me/TotemAnimalQuizBot")
     telegram = InlineKeyboardButton("✈️ Telegram", switch_inline_query=result_text)
-    back_button = InlineKeyboardButton("🔙 Вернуться", callback_data="back_to_result")
+    back_button = InlineKeyboardButton("🔙 Back", callback_data="back_to_result")
     
     markup.add(twitter, vk)
     markup.add(facebook, telegram)
@@ -241,7 +241,7 @@ def back_to_result(call):
         bot.edit_message_caption(
             chat_id=chat_id,
             message_id=call.message.message_id,
-            caption=f"{result['description']}\n\n[Узнай больше...]({result['url']})",
+            caption=f"{result['description']}\n\n[Learn more...]({result['url']})",
             reply_markup=markup,
             parse_mode="Markdown"
         )
@@ -250,7 +250,7 @@ def back_to_result(call):
         bot.send_photo(
             chat_id,
             result["image"],
-            caption=f"{result['description']}\n\n[Узнай больше...]({result['url']})",
+            caption=f"{result['description']}\n\n[Learn more...]({result['url']})",
             reply_markup=markup,
             parse_mode="Markdown"
         )
