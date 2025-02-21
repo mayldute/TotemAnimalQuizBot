@@ -1,33 +1,85 @@
-@TotemAnimalQuizBot is an interactive Telegram quiz bot designed to promote the Moscow Zoo’s adoption program. It helps users discover their "totem animal" and learn more about how they can become a guardian of one of the zoo's animals.
+# Moscow Zoo Totem Animal Quiz Bot
 
-**Functionality:**
+This project is a Telegram bot that offers users an interactive quiz to discover their totem animal based on their preferences and personality. Built using python-telegram-bot, Redis, and threading, it also allows users to share results, contact support, and leave feedback.
 
-Easy Interaction – The bot starts with the /start command or a button. It guides the user through the entire quiz process by asking multiple-choice questions.
+## Features
+- Interactive Quiz: Answer fun questions to find your totem animal.
+- Personalized Results: Each result comes with a detailed animal description and image.
+- Guardianship Program Info: Direct links to become an animal guardian.
+- Feedback and Support: Users can send feedback or contact support.
+- Retake Quiz: Allows users to retake the quiz anytime.
+- Sharing Options: Share your results on social media platforms.
 
-Interactive Quiz – Sequential questions with images help determine the user’s totem animal.
+## Technologies Used
+- Python – The main programming language.
+- PyTelegramBotAPI – For interacting with Telegram’s Bot API.
+- Redis – Caching images to improve performance.
+- Threading – Manages inactive user data cleanup.
+- dotenv – Securely handles environment variables.
 
-Answer Processing Algorithm – Each answer is assigned points, which ultimately determine the result.
+## Setup and Installation
 
-Result Generation – At the end of the quiz, the bot sends the user a description of their totem animal and a link to the adoption program.
+1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/quiz-bot.git
+cd quiz-bot
+```
 
-Image Support – The quiz is accompanied by images, and the result includes an image of the specific animal.
+2. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-Social Media Integration – The user can easily share the result via Twitter, VK, Facebook, and Telegram.
+3. Configure Environment Variables
+Create a `.env` file and set your token and admin ID:
+```bash
+TOKEN=your_telegram_bot_token
+ADMIN_ID=your_telegram_user_id
+```
 
-Zoo Staff Contact – Users can send a question to a zoo staff member, with the quiz result included.
+4. Set Up Redis
 
-Quiz Restart – The bot allows the user to retake the quiz.
+Make sure Redis is installed and running:
+```bash
+sudo apt update
+sudo apt install redis-server
+sudo systemctl start redis
+sudo systemctl enable redis
+```
 
-Feedback Collection – Users can leave feedback about the bot and the quiz.
+## How to Run the Bot
+```bash
+python bot.py
+```
+The bot will start polling and be available on Telegram.
 
-Security and Privacy – User data is stored for no more than 24 hours, in compliance with GDPR.
+## Usage Guide
 
-Scalability – The bot works reliably as the number of users increases.
+### Start the Quiz
+- Send `/start` to begin.
+- Follow on-screen questions.
+- Your totem animal result will be shown at the end.
 
-Optimization and Monitoring – Multitasking and error handling are used, such as Redis for image caching.
+### Contact Support
+- Use the Contact Support button after receiving results to ask questions.
 
-**Requirements:**
+### Leave Feedback
+- Share your thoughts using the Leave Feedback button.
 
-Python 3.8+
+### Share Results
+- Share your quiz results directly on:
+    - Twitter
+    - VK
+    - Facebook
+    - Telegram
 
-Libraries from requirements.txt: pip install -r requirements.txt
+## Admin Features
+- Receive user questions and feedback directly via Telegram.
+- Track user results for insights.
+
+## Error Handling
+- Redis connection issues
+- Image caching failures
+- Missing or corrupted user data
+
+All errors are logged and handled gracefully without affecting the user experience.
