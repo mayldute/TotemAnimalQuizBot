@@ -21,8 +21,8 @@ This project is a Telegram bot that offers users an interactive quiz to discover
 
 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/quiz-bot.git
-cd quiz-bot
+git clone https://github.com/yourusername/TotemAnimalQuizBot.git
+cd TotemAnimalQuizBot
 ```
 
 2. Install Dependencies
